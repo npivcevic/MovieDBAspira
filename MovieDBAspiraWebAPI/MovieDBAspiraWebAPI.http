@@ -1,0 +1,6 @@
+@MovieDBAspiraWebAPI_HostAddress = http://localhost:5290
+
+GET {{MovieDBAspiraWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
