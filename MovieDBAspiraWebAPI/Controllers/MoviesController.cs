@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MovieDBAspiraWebAPI.DTOs;
+using MovieDBAspiraWebAPI.Mappers;
 using MovieDBAspiraWebAPI.Models;
 
 namespace MovieDBAspiraWebAPI.Controllers
@@ -22,9 +24,9 @@ namespace MovieDBAspiraWebAPI.Controllers
 
         // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<MovieListDTO>>> GetMovies()
         {
-            return await _context.Movies.ToListAsync();
+            return await _context.Movies.Select(movie => movie.ToMovieListDTO()).ToListAsync();
         }
 
         // GET: api/Movies/5
